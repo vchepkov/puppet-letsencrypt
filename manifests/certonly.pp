@@ -251,10 +251,7 @@ define letsencrypt::certonly (
     path        => $facts['path'],
     environment => $environment,
     provider    => 'shell',
-    require     => [
-      Class['letsencrypt'],
-      File['/usr/local/sbin/letsencrypt-domain-validation'],
-    ],
+    require     => File['/usr/local/sbin/letsencrypt-domain-validation'],
   }
 
   if $manage_cron {
